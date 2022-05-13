@@ -41,14 +41,45 @@ const CustomField = (props: CustomFieldProps) => {
 	)
 }
 
+interface ValidateInterface {
+	name?: string
+	url?: string
+}
+
+const isValidGithubUrl = (url: string) => {
+	try {
+		const newUrl = new URL(url)
+
+		if (!newUrl || newUrl.hostname !== 'github.com') return false
+	} catch (error) {
+		return false
+	}
+
+	return true
+}
+
 const FormDialog = ({ open, setOpen }: Props) => {
 	const handleClose = () => setOpen(false)
 
 	const handleSubmit = () => {}
 
+	const validate = (values: Project) => {
+		const { name, url } = values
+
+		const errors: ValidateInterface = {}
+
+		if (!name) errors.name = 'Name is required'
+
+		if (!url) errors.url = 'Url is required'
+
+		if (!isValidGithubUrl(url)) errors.url = 'Url is not a valid github url'
+
+		return errors
+	}
+
 	return (
 		<Formik
-			validate={values => {}}
+			validate={validate}
 			onSubmit={handleSubmit}
 			initialValues={initialValues}
 		>
