@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Grid from '@mui/material/Grid'
 
 import { getProjectData, storeProjectData } from 'utils/projectDataUtils'
 
@@ -24,9 +25,11 @@ const ProjectCardsShow = () => {
 
 	return (
 		<div>
-			{projectData.map(project => (
-				<ProjectCard {...project} key={project.id} />
-			))}
+			<Grid container>
+				{projectData.map(project => (
+					<ProjectCard {...project} key={project.id} />
+				))}
+			</Grid>
 		</div>
 	)
 }
