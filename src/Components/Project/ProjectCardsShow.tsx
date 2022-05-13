@@ -31,6 +31,13 @@ const ProjectCardsShow = () => {
 		storeProjectData(newProjects)
 	}
 
+	const deleteProject = (id: string) => {
+		const remaining = projectData.filter(project => project.id !== id)
+
+		setProjectData(remaining)
+		storeProjectData(remaining)
+	}
+
 	return (
 		<div>
 			<AddProject addNewProject={addNewProject} />
