@@ -8,7 +8,7 @@ const storeProjectData = (projectData: Projects) =>
 const getProjectData = (): Projects | null => {
 	const projectData = localStorage.getItem(PROJECTS)
 
-	return projectData ? JSON.parse(projectData) : null
+	return projectData ? JSON.parse(projectData) as Projects : null
 }
 
 export { storeProjectData, getProjectData }
