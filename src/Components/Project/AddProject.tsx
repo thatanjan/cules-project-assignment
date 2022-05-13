@@ -24,7 +24,7 @@ const AddProject = ({ addNewProject }: Props) => {
 				Add project
 			</Button>
 
-			<AddProjectForm {...formProps} />
+			{open && <AddProjectForm {...formProps} />}
 		</>
 	)
 }
