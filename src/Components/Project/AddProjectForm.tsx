@@ -1,10 +1,11 @@
+/* eslint-disable arrow-body-style */
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field, FieldAttributes } from 'formik'
 import { TextField } from 'formik-mui'
 import { nanoid } from 'nanoid'
 
@@ -21,6 +22,23 @@ const initialValues: Project = {
 	rating: 0,
 	created_at: new Date().toISOString(),
 	url: '',
+}
+
+interface CustomFieldProps extends FieldAttributes<any> {
+	name: string
+}
+
+const CustomField = (props: CustomFieldProps) => {
+	return (
+		<Field
+			component={TextField}
+			{...props}
+			variant='standard'
+			fullWidth
+			sx={{ mb: '1rem' }}
+			type='text'
+		/>
+	)
 }
 
 const FormDialog = ({ open, setOpen }: Props) => {
@@ -43,23 +61,8 @@ const FormDialog = ({ open, setOpen }: Props) => {
 								Please provide project information to add a new project.
 							</DialogContentText>
 
-							<Field component={TextField} name='email' type='email' label='Email' />
-							<br />
-							<Field
-								component={TextField}
-								type='password'
-								label='Password'
-								name='password'
-							/>
-							<br />
-							<Button
-								variant='contained'
-								color='primary'
-								disabled={isSubmitting}
-								onClick={submitForm}
-							>
-								Submit
-							</Button>
+							<CustomField label='Name' name='name' />
+							<CustomField label='GitHub URL' name='url' />
 						</DialogContent>
 
 						<DialogActions>
