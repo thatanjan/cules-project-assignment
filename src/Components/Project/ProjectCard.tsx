@@ -17,9 +17,10 @@ import DeleteProject from './DeleteProject'
 
 interface DeleteCardProps {
 	id: string
+	deleteProject: (id: string) => void
 }
 
-const DeleteCard = ({ id }: DeleteCardProps) => {
+const DeleteCard = ({ id, deleteProject }: DeleteCardProps) => {
 	const [open, setOpen] = useState(false)
 
 	const handleClose = () => {
@@ -30,20 +31,39 @@ const DeleteCard = ({ id }: DeleteCardProps) => {
 		setOpen(true)
 	}
 
+	const handleDelete = () => {
+		deleteProject(id)
+		handleClose()
+	}
+
 	return (
 		<>
 			<IconButton onClick={handleOpen}>
 				<DeleteIcon />
 			</IconButton>
-			<DeleteProject open={open} handleClose={handleClose} id={id} />
+			<DeleteProject
+				open={open}
+				handleDelete={handleDelete}
+				handleClose={handleClose}
+			/>
 		</>
 	)
 }
 
-const ProjectCard = ({ name, rating, url, id }: Project) => (
+interface ProjectCardProps extends Project {
+	deleteProject: (id: string) => void
+}
+
+const ProjectCard = ({
+	name,
+	rating,
+	url,
+	id,
+	deleteProject,
+}: ProjectCardProps) => (
 	<Card component={Grid} item xs={6} sx={{ pb: '1rem' }}>
 		<CardHeader
-			action={<DeleteCard id={id} />}
+			action={<DeleteCard id={id} deleteProject={deleteProject} />}
 			title={<Typography variant='h4'>{name}</Typography>}
 		/>
 		<CardContent

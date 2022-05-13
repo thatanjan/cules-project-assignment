@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
@@ -7,12 +6,12 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 
 interface Props {
-	id: string
 	handleClose: () => void
 	open: boolean
+	handleDelete: () => void
 }
 
-const AlertDialog = ({ id, open, handleClose }: Props) => (
+const AlertDialog = ({ handleDelete, open, handleClose }: Props) => (
 	<Dialog open={open} onClose={handleClose}>
 		<DialogTitle>Are you sure you want to delete this project?</DialogTitle>
 		<DialogContent>
@@ -22,7 +21,7 @@ const AlertDialog = ({ id, open, handleClose }: Props) => (
 		</DialogContent>
 		<DialogActions>
 			<Button onClick={handleClose}>No</Button>
-			<Button onClick={handleClose} autoFocus>
+			<Button onClick={handleDelete} autoFocus>
 				Yes
 			</Button>
 		</DialogActions>

@@ -44,7 +44,7 @@ const ProjectCardsShow = () => {
 
 			<Grid container>
 				{projectData.map(project => (
-					<ProjectCard {...project} key={project.id} />
+					<ProjectCard deleteProject={deleteProject} {...project} key={project.id} />
 				))}
 			</Grid>
 		</div>
