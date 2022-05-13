@@ -8,6 +8,7 @@ import { Projects } from 'types/Project'
 import initialData from 'data.json'
 
 import ProjectCard from './ProjectCard'
+import AddProject from './AddProject'
 
 const ProjectCardsShow = () => {
 	const [projectData, setProjectData] = useState<Projects>([])
@@ -25,6 +26,8 @@ const ProjectCardsShow = () => {
 
 	return (
 		<div>
+			<AddProject />
+
 			<Grid container>
 				{projectData.map(project => (
 					<ProjectCard {...project} key={project.id} />
