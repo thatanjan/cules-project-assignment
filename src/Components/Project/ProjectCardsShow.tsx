@@ -24,8 +24,12 @@ const ProjectCardsShow = () => {
 		setProjectData(data as Projects)
 	}, [])
 
-	const addNewProject = (project: Project) =>
-		setProjectData(prev => prev.concat(project))
+	const addNewProject = (project: Project) => {
+		const newProjects = projectData.concat(project)
+
+		setProjectData(newProjects)
+		storeProjectData(newProjects)
+	}
 
 	return (
 		<div>
