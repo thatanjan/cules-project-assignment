@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid'
 
 import { getProjectData, storeProjectData } from 'utils/projectDataUtils'
 
-import { Projects } from 'types/Project'
+import { Projects, Project } from 'types/Project'
 
 import initialData from 'data.json'
 
@@ -24,9 +24,12 @@ const ProjectCardsShow = () => {
 		setProjectData(data as Projects)
 	}, [])
 
+	const addNewProject = (project: Project) =>
+		setProjectData(prev => prev.concat(project))
+
 	return (
 		<div>
-			<AddProject />
+			<AddProject addNewProject={addNewProject} />
 
 			<Grid container>
 				{projectData.map(project => (

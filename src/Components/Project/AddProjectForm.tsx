@@ -5,7 +5,7 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
-import { Formik, Form, Field, FieldAttributes } from 'formik'
+import { Formik, Form, Field, FieldAttributes, FormikHelpers } from 'formik'
 import { TextField } from 'formik-mui'
 import { nanoid } from 'nanoid'
 
@@ -14,6 +14,7 @@ import { Project } from 'types/Project'
 interface Props {
 	open: boolean
 	setOpen: (open: boolean) => void
+	addNewProject: (project: Project) => void
 }
 
 const initialValues: Project = {
@@ -58,10 +59,17 @@ const isValidGithubUrl = (url: string) => {
 	return true
 }
 
-const FormDialog = ({ open, setOpen }: Props) => {
+const FormDialog = ({ open, setOpen, addNewProject }: Props) => {
 	const handleClose = () => setOpen(false)
 
-	const handleSubmit = () => {}
+	const handleSubmit = (
+		project: Project,
+		{ resetForm }: FormikHelpers<Project>
+	) => {
+		addNewProject(project)
+		resetForm()
+		handleClose()
+	}
 
 	const validate = (values: Project) => {
 		const { name, url } = values
@@ -98,7 +106,7 @@ const FormDialog = ({ open, setOpen }: Props) => {
 
 						<DialogActions>
 							<Button onClick={handleClose}>Cancel</Button>
-							<Button onClick={handleSubmit}>Add</Button>
+							<Button onClick={submitForm}>Add</Button>
 						</DialogActions>
 					</Dialog>
 				</Form>

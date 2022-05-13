@@ -3,14 +3,18 @@ import Button from '@mui/material/Button'
 
 import AddIcon from '@mui/icons-material/Add'
 
+import { Project } from 'types/Project'
+
 import AddProjectForm from './AddProjectForm'
 
-type Props = {}
+interface Props {
+	addNewProject: (project: Project) => void
+}
 
-const AddProject = (props: Props) => {
+const AddProject = ({ addNewProject }: Props) => {
 	const [open, setOpen] = useState(false)
 
-	const formProps = { open, setOpen }
+	const formProps = { open, setOpen, addNewProject }
 
 	const openDialog = () => setOpen(true)
 
