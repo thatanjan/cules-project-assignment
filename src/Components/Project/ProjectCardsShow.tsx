@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { nanoid } from 'nanoid'
 
 import { getProjectData, storeProjectData } from 'utils/projectDataUtils'
 
@@ -9,9 +8,7 @@ import initialData from 'data.json'
 
 import ProjectCard from './ProjectCard'
 
-type Props = {}
-
-const ProjectCardsShow = (props: Props) => {
+const ProjectCardsShow = () => {
 	const [projectData, setProjectData] = useState<Projects>([])
 
 	useEffect(() => {
@@ -27,8 +24,8 @@ const ProjectCardsShow = (props: Props) => {
 
 	return (
 		<div>
-			{projectData.map(() => (
-				<ProjectCard key={nanoid()} />
+			{projectData.map(project => (
+				<ProjectCard {...project} key={project.id} />
 			))}
 		</div>
 	)

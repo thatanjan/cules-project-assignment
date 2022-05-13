@@ -1,5 +1,5 @@
-type Props = {}
+import { Project } from 'types/Project'
 
-const ProjectCard = (props: Props) => <div>ProjectCard</div>
+const ProjectCard = ({ name }: Project) => <div>{name}</div>
 
 export default ProjectCard
