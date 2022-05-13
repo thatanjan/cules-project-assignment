@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -12,14 +13,37 @@ import DeleteIcon from '@mui/icons-material/Delete'
 
 import { Project } from 'types/Project'
 
-const ProjectCard = ({ name, rating, url }: Project) => (
+import DeleteProject from './DeleteProject'
+
+interface DeleteCardProps {
+	id: string
+}
+
+const DeleteCard = ({ id }: DeleteCardProps) => {
+	const [open, setOpen] = useState(false)
+
+	const handleClose = () => {
+		setOpen(false)
+	}
+
+	const handleOpen = () => {
+		setOpen(true)
+	}
+
+	return (
+		<>
+			<IconButton onClick={handleOpen}>
+				<DeleteIcon />
+			</IconButton>
+			<DeleteProject open={open} handleClose={handleClose} id={id} />
+		</>
+	)
+}
+
+const ProjectCard = ({ name, rating, url, id }: Project) => (
 	<Card component={Grid} item xs={6} sx={{ pb: '1rem' }}>
 		<CardHeader
-			action={
-				<IconButton>
-					<DeleteIcon />
-				</IconButton>
-			}
+			action={<DeleteCard id={id} />}
 			title={<Typography variant='h4'>{name}</Typography>}
 		/>
 		<CardContent
