@@ -8,12 +8,16 @@ import { Projects, Project } from 'types/Project'
 
 import initialData from 'data.json'
 
+import { useProjects } from 'redux/hooks/baseHooks'
+
 import ProjectCard from './ProjectCard'
 import AddProject from './AddProject'
 import SortProjects from './SortProjects'
 
 const ProjectCardsShow = () => {
 	const [projectData, setProjectData] = useState<Projects>([])
+
+	const projects = useProjects()
 
 	useEffect(() => {
 		let data = getProjectData()
@@ -57,7 +61,7 @@ const ProjectCardsShow = () => {
 					gap: '1rem',
 				}}
 			>
-				{projectData.map(project => (
+				{projects.map(project => (
 					<ProjectCard deleteProject={deleteProject} {...project} key={project.id} />
 				))}
 			</Box>
