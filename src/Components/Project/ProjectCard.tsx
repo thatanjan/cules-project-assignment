@@ -53,7 +53,17 @@ const DeleteButton = ({ id }: { id: string }) => {
 }
 
 const ProjectCard = ({ name, rating, url, id }: Project) => (
-	<Card sx={{ pb: '1rem' }} component={motion.div} layout>
+	<Card
+		sx={{ pb: '1rem' }}
+		component={motion.div}
+		layout
+		initial={{
+			scale: 0,
+		}}
+		animate={{
+			scale: 1,
+		}}
+	>
 		<CardHeader
 			action={<DeleteButton id={id} />}
 			title={<Typography variant='h4'>{name}</Typography>}
