@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Grid from '@mui/material/Grid'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
 import CardContent from '@mui/material/CardContent'
@@ -61,7 +60,7 @@ const ProjectCard = ({
 	id,
 	deleteProject,
 }: ProjectCardProps) => (
-	<Card component={Grid} item xs={6} sx={{ pb: '1rem' }}>
+	<Card sx={{ pb: '1rem' }}>
 		<CardHeader
 			action={<DeleteCard id={id} deleteProject={deleteProject} />}
 			title={<Typography variant='h4'>{name}</Typography>}

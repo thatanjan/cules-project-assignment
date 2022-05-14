@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
 
 import { getProjectData, storeProjectData } from 'utils/projectDataUtils'
 
@@ -42,11 +43,21 @@ const ProjectCardsShow = () => {
 		<div>
 			<AddProject addNewProject={addNewProject} />
 
-			<Grid container>
+			<Box
+				sx={{
+					display: 'grid',
+					gridTemplateColumns: {
+						xs: '1fr',
+						md: 'repeat(2, 1fr)',
+						lg: 'repeat(3, 1fr)',
+					},
+					gap: '1rem',
+				}}
+			>
 				{projectData.map(project => (
 					<ProjectCard deleteProject={deleteProject} {...project} key={project.id} />
 				))}
-			</Grid>
+			</Box>
 		</div>
 	)
 }
