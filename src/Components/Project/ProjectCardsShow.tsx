@@ -10,6 +10,7 @@ import initialData from 'data.json'
 
 import ProjectCard from './ProjectCard'
 import AddProject from './AddProject'
+import SortProjects from './SortProjects'
 
 const ProjectCardsShow = () => {
 	const [projectData, setProjectData] = useState<Projects>([])
@@ -42,6 +43,8 @@ const ProjectCardsShow = () => {
 	return (
 		<div>
 			<AddProject addNewProject={addNewProject} />
+
+			<SortProjects />
 
 			<Box
 				sx={{
