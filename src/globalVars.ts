@@ -7,6 +7,8 @@ const sortingOptions = {
 	nameDesc: 'Name (descending)',
 	ratingAsc: 'Rating (ascending)',
 	ratingDesc: 'Rating (descending)',
-}
+} as const
+
+export type SortType = typeof sortingOptions[keyof typeof sortingOptions]
 
 export { PROJECTS, sortingOptions }
