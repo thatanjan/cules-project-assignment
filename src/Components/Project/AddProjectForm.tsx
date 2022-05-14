@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable arrow-body-style */
 import { useState } from 'react'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
@@ -21,25 +19,22 @@ import { addProject } from 'redux/reducers/projectsReducer'
 interface Props {
 	open: boolean
 	setOpen: (open: boolean) => void
-	addNewProject: (project: Project) => void
 }
 
 interface CustomFieldProps extends FieldAttributes<any> {
 	name: string
 }
 
-const CustomField = (props: CustomFieldProps) => {
-	return (
-		<Field
-			component={TextField}
-			{...props}
-			variant='standard'
-			fullWidth
-			sx={{ mb: '1rem' }}
-			type='text'
-		/>
-	)
-}
+const CustomField = (props: CustomFieldProps) => (
+	<Field
+		component={TextField}
+		{...props}
+		variant='standard'
+		fullWidth
+		sx={{ mb: '1rem' }}
+		type='text'
+	/>
+)
 
 interface ValidateInterface {
 	name?: string
@@ -58,7 +53,7 @@ const isValidGithubUrl = (url: string) => {
 	return true
 }
 
-const FormDialog = ({ open, setOpen, addNewProject }: Props) => {
+const FormDialog = ({ open, setOpen }: Props) => {
 	const dispatch = useAppDispatch()
 
 	const [ratingValue, setRatingValue] = useState(0)
@@ -76,7 +71,6 @@ const FormDialog = ({ open, setOpen, addNewProject }: Props) => {
 
 		dispatch(addProject(project))
 
-		addNewProject(project)
 		resetForm()
 		handleClose()
 	}

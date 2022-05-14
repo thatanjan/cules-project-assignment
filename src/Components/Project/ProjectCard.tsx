@@ -1,5 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable react/no-unused-prop-types */
 import { useState } from 'react'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -21,7 +19,6 @@ import DeleteProject from './DeleteProject'
 
 interface DeleteCardProps {
 	id: string
-	deleteProject: (id: string) => void
 }
 
 const DeleteCard = ({ id }: DeleteCardProps) => {
@@ -58,21 +55,10 @@ const DeleteCard = ({ id }: DeleteCardProps) => {
 	)
 }
 
-interface ProjectCardProps extends Project {
-	// eslint-disable-next-line no-unused-vars
-	deleteProject: (id: string) => void
-}
-
-const ProjectCard = ({
-	name,
-	rating,
-	url,
-	id,
-	deleteProject,
-}: ProjectCardProps) => (
+const ProjectCard = ({ name, rating, url, id }: Project) => (
 	<Card sx={{ pb: '1rem' }}>
 		<CardHeader
-			action={<DeleteCard id={id} deleteProject={deleteProject} />}
+			action={<DeleteCard id={id} />}
 			title={<Typography variant='h4'>{name}</Typography>}
 		/>
 		<CardContent
