@@ -14,6 +14,10 @@ import { nanoid } from 'nanoid'
 
 import { Project } from 'types/Project'
 
+import { useAppDispatch } from 'redux/hooks/baseHooks'
+
+import { addProject } from 'redux/reducers/projectsReducer'
+
 interface Props {
 	open: boolean
 	setOpen: (open: boolean) => void
@@ -55,6 +59,8 @@ const isValidGithubUrl = (url: string) => {
 }
 
 const FormDialog = ({ open, setOpen, addNewProject }: Props) => {
+	const dispatch = useAppDispatch()
+
 	const [ratingValue, setRatingValue] = useState(0)
 
 	const handleClose = () => setOpen(false)
@@ -67,6 +73,8 @@ const FormDialog = ({ open, setOpen, addNewProject }: Props) => {
 
 		const project: Project = values
 		project.rating = ratingValue
+
+		dispatch(addProject(project))
 
 		addNewProject(project)
 		resetForm()
