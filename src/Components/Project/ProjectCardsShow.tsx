@@ -11,9 +11,18 @@ const ProjectCardsShow = () => {
 
 	return (
 		<div>
-			<AddProject />
+			<Box
+				sx={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					justifyContent: 'space-between',
+					alignItems: 'start',
+				}}
+			>
+				<AddProject />
 
-			<SortProjects />
+				<SortProjects />
+			</Box>
 
 			<Box
 				sx={{
