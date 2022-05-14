@@ -20,7 +20,14 @@ const AddProject = ({ addNewProject }: Props) => {
 
 	return (
 		<>
-			<Button startIcon={<AddIcon />} variant='contained' onClick={openDialog}>
+			<Button
+				sx={{
+					mb: '2rem',
+				}}
+				startIcon={<AddIcon />}
+				variant='contained'
+				onClick={openDialog}
+			>
 				Add project
 			</Button>
 
