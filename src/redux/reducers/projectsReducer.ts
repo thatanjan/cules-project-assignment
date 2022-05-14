@@ -13,7 +13,7 @@ const initialState = (() => {
 		projects = initialData
 	}
 
-	const state = { projects, sorType: '' }
+	const state = { projects, sortType: '' }
 
 	return state
 })()
