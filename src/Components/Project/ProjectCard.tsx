@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+/* eslint-disable react/no-unused-prop-types */
 import { useState } from 'react'
 import Card from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -12,6 +14,9 @@ import DeleteIcon from '@mui/icons-material/Delete'
 
 import { Project } from 'types/Project'
 
+import { useAppDispatch } from 'redux/hooks/baseHooks'
+import { deleteProject } from 'redux/reducers/projectsReducer'
+
 import DeleteProject from './DeleteProject'
 
 interface DeleteCardProps {
@@ -19,7 +24,9 @@ interface DeleteCardProps {
 	deleteProject: (id: string) => void
 }
 
-const DeleteCard = ({ id, deleteProject }: DeleteCardProps) => {
+const DeleteCard = ({ id }: DeleteCardProps) => {
+	const dispatch = useAppDispatch()
+
 	const [open, setOpen] = useState(false)
 
 	const handleClose = () => {
@@ -31,6 +38,8 @@ const DeleteCard = ({ id, deleteProject }: DeleteCardProps) => {
 	}
 
 	const handleDelete = () => {
+		dispatch(deleteProject(id))
+
 		deleteProject(id)
 		handleClose()
 	}
@@ -50,6 +59,7 @@ const DeleteCard = ({ id, deleteProject }: DeleteCardProps) => {
 }
 
 interface ProjectCardProps extends Project {
+	// eslint-disable-next-line no-unused-vars
 	deleteProject: (id: string) => void
 }
 
