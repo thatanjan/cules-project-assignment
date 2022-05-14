@@ -30,6 +30,7 @@ export const projectsSlice = createSlice({
 			const remaining = state.projects.filter(project => project.id !== payload)
 
 			state.projects = remaining
+			storeProjectData(remaining)
 		},
 	},
 })
