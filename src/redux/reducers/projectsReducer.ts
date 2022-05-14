@@ -5,15 +5,17 @@ import { getProjectData, storeProjectData } from 'utils/projectDataUtils'
 
 import initialData from 'data.json'
 
-const initialState: Projects = (() => {
-	let data = getProjectData()
+const initialState = (() => {
+	let projects = getProjectData()
 
-	if (!data) {
+	if (!projects) {
 		storeProjectData(initialData)
-		data = initialData
+		projects = initialData
 	}
 
-	return data
+	const state = { projects, sorType: '' }
+
+	return state
 })()
 
 export const projectsSlice = createSlice({
