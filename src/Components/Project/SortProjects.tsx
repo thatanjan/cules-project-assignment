@@ -1,24 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select, { SelectChangeEvent } from '@mui/material/Select'
 
-const BasicSelect = () => {
-	const sortingOptions = {
-		dateAsc: 'Date (ascending)',
-		dateDesc: 'Date (descending)',
-		nameAsc: 'Name (ascending)',
-		nameDesc: 'Name (descending)',
-		ratingAsc: 'Rating (ascending)',
-		ratingDesc: 'Rating (descending)',
-	}
+import { sortingOptions, SortType } from 'globalVars'
 
-	const [sortingOption, setSortingOption] = useState(sortingOptions.nameAsc)
+import { useSortType, useAppDispatch } from 'redux/hooks/baseHooks'
+
+import { sortProjects } from 'redux/reducers/projectsReducer'
+
+const BasicSelect = () => {
+	const sortType = useSortType()
+	const dispatch = useAppDispatch()
 
 	const handleChange = (event: SelectChangeEvent) => {
-		setSortingOption(event.target.value as string)
+		const value = event.target.value as SortType
+
+		dispatch(sortProjects(value))
 	}
 
 	return (
@@ -26,12 +26,16 @@ const BasicSelect = () => {
 			<FormControl variant='standard' fullWidth>
 				<InputLabel>Sort Projects</InputLabel>
 
-				<Select value={sortingOption} label='Sort' onChange={handleChange}>
-					{Object.keys(sortingOptions).map(key => (
-						<MenuItem value={key} key={key}>
-							{sortingOptions[key as keyof typeof sortingOptions]}
-						</MenuItem>
-					))}
+				<Select value={sortType} label='Sort' onChange={handleChange}>
+					{Object.keys(sortingOptions).map(key => {
+						const value = sortingOptions[key as keyof typeof sortingOptions]
+
+						return (
+							<MenuItem value={value} key={key}>
+								{value}
+							</MenuItem>
+						)
+					})}
 				</Select>
 			</FormControl>
 		</Box>
