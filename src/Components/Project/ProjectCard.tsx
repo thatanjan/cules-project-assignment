@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import Rating from '@mui/material/Rating'
 import Button from '@mui/material/Button'
 import Link from '@mui/material/Link'
+import { motion } from 'framer-motion'
 
 import DeleteIcon from '@mui/icons-material/Delete'
 
@@ -52,7 +53,7 @@ const DeleteButton = ({ id }: { id: string }) => {
 }
 
 const ProjectCard = ({ name, rating, url, id }: Project) => (
-	<Card sx={{ pb: '1rem' }}>
+	<Card sx={{ pb: '1rem' }} component={motion.div} layout>
 		<CardHeader
 			action={<DeleteButton id={id} />}
 			title={<Typography variant='h4'>{name}</Typography>}
