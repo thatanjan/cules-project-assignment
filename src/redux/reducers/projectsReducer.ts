@@ -1,11 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { Project } from 'types/Project'
+import { Project, Projects } from 'types/Project'
 import { getProjectData, storeProjectData } from 'utils/projectDataUtils'
 
+import { sortingOptions, SortType } from 'globalVars'
 import initialData from 'data.json'
 
-const initialState = (() => {
+interface InitialState {
+	projects: Projects
+	sortType: SortType
+}
+
+const initialState: InitialState = (() => {
 	let projects = getProjectData()
 
 	if (!projects) {
@@ -13,7 +19,7 @@ const initialState = (() => {
 		projects = initialData
 	}
 
-	const state = { projects, sortType: '' }
+	const state = { projects, sortType: sortingOptions.dateAsc }
 
 	return state
 })()
