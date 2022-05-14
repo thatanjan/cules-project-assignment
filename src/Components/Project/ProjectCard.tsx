@@ -17,11 +17,7 @@ import { deleteProject } from 'redux/reducers/projectsReducer'
 
 import DeleteProject from './DeleteProject'
 
-interface DeleteCardProps {
-	id: string
-}
-
-const DeleteCard = ({ id }: DeleteCardProps) => {
+const DeleteButton = ({ id }: { id: string }) => {
 	const dispatch = useAppDispatch()
 
 	const [open, setOpen] = useState(false)
@@ -58,7 +54,7 @@ const DeleteCard = ({ id }: DeleteCardProps) => {
 const ProjectCard = ({ name, rating, url, id }: Project) => (
 	<Card sx={{ pb: '1rem' }}>
 		<CardHeader
-			action={<DeleteCard id={id} />}
+			action={<DeleteButton id={id} />}
 			title={<Typography variant='h4'>{name}</Typography>}
 		/>
 		<CardContent
