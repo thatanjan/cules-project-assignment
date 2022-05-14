@@ -10,7 +10,8 @@ interface Params {
 const sortProjects = ({ sortType, projects }: Params): Projects => {
 	if (sortType! in sortingOptions) return projects
 
-	const { ratingAsc, ratingDesc, dateAsc, dateDesc } = sortingOptions
+	const { ratingAsc, ratingDesc, dateAsc, dateDesc, nameAsc, nameDesc } =
+		sortingOptions
 
 	switch (sortType) {
 		case ratingAsc:
@@ -32,6 +33,12 @@ const sortProjects = ({ sortType, projects }: Params): Projects => {
 				const dateB = new Date(b.created_at)
 				return dateB.getTime() - dateA.getTime()
 			})
+
+		case nameAsc:
+			return projects.sort((a, b) => a.name.localeCompare(b.name))
+
+		case nameDesc:
+			return projects.sort((a, b) => b.name.localeCompare(a.name))
 
 		default:
 			return projects.sort((a, b) => a.rating - b.rating)
