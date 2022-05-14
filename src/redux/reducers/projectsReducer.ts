@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { Project, Projects } from 'types/Project'
 import { getProjectData, storeProjectData } from 'utils/projectDataUtils'
-import sortProjects from 'utils/sortProjects'
+import sortProjectsData from 'utils/sortProjects'
 
 import { sortingOptions, SortType } from 'globalVars'
 import initialData from 'data.json'
@@ -22,7 +22,7 @@ const initialState: InitialState = (() => {
 
 	const sortType = sortingOptions.dateDesc
 
-	projects = sortProjects({ projects, sortType })
+	projects = sortProjectsData({ projects, sortType })
 
 	const state = { projects, sortType }
 
@@ -36,7 +36,7 @@ export const projectsSlice = createSlice({
 		addProject: ({ projects, sortType }, { payload }: PayloadAction<Project>) => {
 			projects.push(payload)
 			storeProjectData(projects)
-			sortProjects({ projects, sortType })
+			sortProjectsData({ projects, sortType })
 		},
 		deleteProject: (state, { payload }: PayloadAction<string>) => {
 			const remaining = state.projects.filter(project => project.id !== payload)
