@@ -36,6 +36,7 @@ export const projectsSlice = createSlice({
 		addProject: ({ projects, sortType }, { payload }: PayloadAction<Project>) => {
 			projects.push(payload)
 			storeProjectData(projects)
+			sortProjects({ projects, sortType })
 		},
 		deleteProject: (state, { payload }: PayloadAction<string>) => {
 			const remaining = state.projects.filter(project => project.id !== payload)
