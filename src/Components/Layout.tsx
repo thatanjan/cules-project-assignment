@@ -40,6 +40,7 @@ const Layout = ({ children }: Props) => {
 					maxWidth: '100%',
 					overflowX: 'hidden',
 					minHeight: '100vh',
+					paddingBottom: '10rem',
 				}}
 			>
 				{children}
