@@ -10,6 +10,10 @@ import Fab from '@mui/material/Fab'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import NightlightIcon from '@mui/icons-material/Nightlight'
 
+import { Provider } from 'react-redux'
+
+import { store } from 'redux/store'
+
 interface Props {
 	children: ReactNode
 }
@@ -34,30 +38,32 @@ const Layout = ({ children }: Props) => {
 	const toggleMode = () => setMode(mode === 'light' ? 'dark' : 'light')
 
 	return (
-		<ThemeProvider theme={theme}>
-			<Paper
-				sx={{
-					maxWidth: '100%',
-					overflowX: 'hidden',
-					minHeight: '100vh',
-					paddingBottom: '10rem',
-				}}
-			>
-				{children}
-
-				<Fab
-					color='primary'
-					onClick={toggleMode}
+		<Provider store={store}>
+			<ThemeProvider theme={theme}>
+				<Paper
 					sx={{
-						position: 'fixed',
-						bottom: '10%',
-						right: '10%',
+						maxWidth: '100%',
+						overflowX: 'hidden',
+						minHeight: '100vh',
+						paddingBottom: '10rem',
 					}}
 				>
-					{mode === 'light' ? <NightlightIcon /> : <LightModeIcon />}
-				</Fab>
-			</Paper>
-		</ThemeProvider>
+					{children}
+
+					<Fab
+						color='primary'
+						onClick={toggleMode}
+						sx={{
+							position: 'fixed',
+							bottom: '10%',
+							right: '10%',
+						}}
+					>
+						{mode === 'light' ? <NightlightIcon /> : <LightModeIcon />}
+					</Fab>
+				</Paper>
+			</ThemeProvider>
+		</Provider>
 	)
 }
 
