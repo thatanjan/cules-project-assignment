@@ -1,10 +1,22 @@
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 
-import { useProjects } from 'redux/hooks/baseHooks'
+import { useProjects, useAppDispatch } from 'redux/hooks/baseHooks'
+import { resetProjects } from 'redux/reducers/projectsReducer'
 
 import ProjectCard from './ProjectCard'
 import AddProject from './AddProject'
 import SortProjects from './SortProjects'
+
+const ResetProjects = () => {
+	const dispatch = useAppDispatch()
+
+	return (
+		<Button variant='contained' onClick={() => dispatch(resetProjects())}>
+			Reset Projects
+		</Button>
+	)
+}
 
 const ProjectCardsShow = () => {
 	const projects = useProjects()
@@ -21,6 +33,8 @@ const ProjectCardsShow = () => {
 				}}
 			>
 				<AddProject />
+
+				<ResetProjects />
 
 				<SortProjects />
 			</Box>
