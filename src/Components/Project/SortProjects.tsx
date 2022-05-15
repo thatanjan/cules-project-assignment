@@ -25,12 +25,17 @@ const BasicSelect = () => {
 			<FormControl variant='standard' fullWidth>
 				<InputLabel>Sort Projects</InputLabel>
 
-				<Select value={sortType} label='Sort' onChange={handleChange}>
+				<Select
+					value={sortType}
+					label='Sort'
+					onChange={handleChange}
+					sx={{ textTransform: 'capitalize' }}
+				>
 					{Object.keys(sortingOptions).map(key => {
 						const value = sortingOptions[key as keyof typeof sortingOptions]
 
 						return (
-							<MenuItem value={value} key={key}>
+							<MenuItem value={value} key={key} sx={{ textTransform: 'capitalize' }}>
 								{value}
 							</MenuItem>
 						)
