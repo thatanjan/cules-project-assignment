@@ -34,7 +34,7 @@ const ProjectCardsShow = () => {
 					flexWrap: 'wrap',
 					justifyContent: 'space-between',
 					alignItems: 'center',
-					marginBottom: '2rem',
+					marginBottom: '3rem',
 
 					'& button': {
 						width: {
