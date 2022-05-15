@@ -6,14 +6,14 @@ import { Projects } from 'types/Project'
 import projectsReducer, { addProject } from './projectsReducer'
 
 test('should return the initial state', () => {
-	const { projects, sortType } = projectsReducer(undefined, {})
+	const { projects, sortType } = projectsReducer(undefined, addProject)
 
 	expect(projects).toEqual(data)
 	expect(sortType).toEqual(sortingOptions.dateDesc)
 })
 
 test('should add new Project', () => {
-	const initialState = projectsReducer(undefined, {})
+	const initialState = projectsReducer(undefined, addProject)
 
 	const newProject = {
 		id: 'a87e8618-7392-4ac2-b4d0-c6b9b8fb3304',
