@@ -52,7 +52,10 @@ export const projectsSlice = createSlice({
 			sortProjectsData({ projects, sortType: payload })
 		},
 		resetProjects: state => {
-			state.projects = initialData
+			state.projects = sortProjectsData({
+				projects: initialData,
+				sortType: state.sortType,
+			})
 			storeProjectData(initialData)
 			return state
 		},
