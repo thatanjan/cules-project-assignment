@@ -13,8 +13,9 @@ import { nanoid } from 'nanoid'
 import { Project } from 'types/Project'
 
 import { useAppDispatch } from 'redux/hooks/baseHooks'
-
 import { addProject } from 'redux/reducers/projectsReducer'
+
+import isValidGithubUrl from 'utils/isValidGithubUrl'
 
 interface Props {
 	open: boolean
@@ -39,18 +40,6 @@ const CustomField = (props: CustomFieldProps) => (
 interface ValidateInterface {
 	name?: string
 	url?: string
-}
-
-const isValidGithubUrl = (url: string) => {
-	try {
-		const newUrl = new URL(url)
-
-		if (!newUrl || newUrl.hostname !== 'github.com') return false
-	} catch (error) {
-		return false
-	}
-
-	return true
 }
 
 const FormDialog = ({ open, setOpen }: Props) => {
