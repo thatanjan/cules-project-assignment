@@ -20,7 +20,7 @@ const initialState: InitialState = (() => {
 		projects = initialData
 	}
 
-	const sortType = sortingOptions.dateDesc
+	const sortType = sortingOptions.ratingAsc
 
 	projects = sortProjectsData({ projects, sortType })
 
@@ -51,13 +51,18 @@ export const projectsSlice = createSlice({
 
 			sortProjectsData({ projects, sortType: payload })
 		},
-		resetProjects: state => {
-			state.projects = sortProjectsData({
-				projects: initialData,
-				sortType: state.sortType,
+		resetProjects: ({ sortType }) => {
+			const projects = sortProjectsData({
+				projects: initialData.concat([]),
+				sortType,
 			})
-			storeProjectData(initialData)
-			return state
+
+			storeProjectData(projects)
+
+			return {
+				projects,
+				sortType,
+			}
 		},
 	},
 })
