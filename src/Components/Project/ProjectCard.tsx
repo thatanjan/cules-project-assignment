@@ -16,6 +16,8 @@ import { Project } from 'types/Project'
 import { useAppDispatch } from 'redux/hooks/baseHooks'
 import { deleteProject } from 'redux/reducers/projectsReducer'
 
+import getRandomColors from 'utils/getRandomColors'
+
 import DeleteProject from './DeleteProject'
 
 const DeleteButton = ({ id }: { id: string }) => {
@@ -40,7 +42,12 @@ const DeleteButton = ({ id }: { id: string }) => {
 
 	return (
 		<>
-			<IconButton onClick={handleOpen}>
+			<IconButton
+				sx={{
+					'& svg': { color: 'white' },
+				}}
+				onClick={handleOpen}
+			>
 				<DeleteIcon />
 			</IconButton>
 			<DeleteProject
@@ -52,43 +59,46 @@ const DeleteButton = ({ id }: { id: string }) => {
 	)
 }
 
-const ProjectCard = ({ name, rating, url, id }: Project) => (
-	<Card
-		sx={{ pb: '1rem' }}
-		component={motion.div}
-		layout
-		initial={{
-			scale: 0,
-		}}
-		animate={{
-			scale: 1,
-		}}
-	>
-		<CardHeader
-			action={<DeleteButton id={id} />}
-			title={<Typography variant='h4'>{name}</Typography>}
-		/>
-		<CardContent
-			sx={{
-				display: 'flex',
-				justifyContent: 'space-between',
-				alignItems: 'center',
+const ProjectCard = ({ name, rating, url, id }: Project) => {
+	const { backgroundColor, color } = getRandomColors()
+
+	return (
+		<Card
+			sx={{ pb: '1rem', backgroundColor, color }}
+			component={motion.div}
+			layout
+			initial={{
+				scale: 0,
+			}}
+			animate={{
+				scale: 1,
 			}}
 		>
-			<Rating value={rating} readOnly sx={{ mt: '0rem' }} />
-
-			<Button
-				component={Link}
-				href={url}
-				underline='none'
-				target='_blank'
-				rel='noopener noreferrer'
-				variant='contained'
+			<CardHeader
+				action={<DeleteButton id={id} />}
+				title={<Typography variant='h4'>{name}</Typography>}
+			/>
+			<CardContent
+				sx={{
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+				}}
 			>
-				Visit
-			</Button>
-		</CardContent>
-	</Card>
-)
+				<Rating value={rating} readOnly sx={{ mt: '0rem' }} />
 
+				<Button
+					component={Link}
+					href={url}
+					underline='none'
+					target='_blank'
+					rel='noopener noreferrer'
+					variant='contained'
+				>
+					Visit
+				</Button>
+			</CardContent>
+		</Card>
+	)
+}
 export default ProjectCard
