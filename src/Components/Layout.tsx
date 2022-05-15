@@ -5,6 +5,10 @@ import {
 	responsiveFontSizes,
 } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
+import Fab from '@mui/material/Fab'
+
+import LightModeIcon from '@mui/icons-material/LightMode'
+import NightlightIcon from '@mui/icons-material/Nightlight'
 
 interface Props {
 	children: ReactNode
@@ -27,6 +31,8 @@ const Layout = ({ children }: Props) => {
 		[mode]
 	)
 
+	const toggleMode = () => setMode(mode === 'light' ? 'dark' : 'light')
+
 	return (
 		<ThemeProvider theme={theme}>
 			<Paper
@@ -37,6 +43,18 @@ const Layout = ({ children }: Props) => {
 				}}
 			>
 				{children}
+
+				<Fab
+					color='primary'
+					onClick={toggleMode}
+					sx={{
+						position: 'fixed',
+						bottom: '10%',
+						right: '10%',
+					}}
+				>
+					{mode === 'light' ? <NightlightIcon /> : <LightModeIcon />}
+				</Fab>
 			</Paper>
 		</ThemeProvider>
 	)
