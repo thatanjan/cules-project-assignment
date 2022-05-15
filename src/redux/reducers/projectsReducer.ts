@@ -20,7 +20,7 @@ const initialState: InitialState = (() => {
 		projects = initialData
 	}
 
-	const sortType = sortingOptions.ratingAsc
+	const sortType = sortingOptions.dateDesc
 
 	projects = sortProjectsData({ projects, sortType })
 
