@@ -17,6 +17,7 @@ const ProjectCardsShow = () => {
 					flexWrap: 'wrap',
 					justifyContent: 'space-between',
 					alignItems: 'start',
+					marginBottom: '2rem',
 				}}
 			>
 				<AddProject />
