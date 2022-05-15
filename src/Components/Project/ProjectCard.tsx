@@ -86,7 +86,15 @@ const ProjectCard = ({ name, rating, url, id }: Project) => {
 					alignItems: 'center',
 				}}
 			>
-				<Rating value={rating} readOnly sx={{ mt: '0rem' }} />
+				<Rating
+					value={rating}
+					readOnly
+					sx={{
+						mt: '0rem',
+
+						'& .MuiRating-iconEmpty': { color: '#c1c1c1' },
+					}}
+				/>
 
 				<Button
 					component={Link}
