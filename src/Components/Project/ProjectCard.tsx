@@ -74,6 +74,11 @@ const ProjectCard = ({ name, rating, url, id }: Project) => {
 			animate={{
 				scale: 1,
 			}}
+			whileHover={{
+				scale: 1.1,
+				transition: { duration: 0.2 },
+				cursor: 'pointer',
+			}}
 		>
 			<CardHeader
 				action={<DeleteButton id={id} />}
