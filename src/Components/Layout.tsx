@@ -1,5 +1,9 @@
 import { useMemo, useState, ReactNode } from 'react'
-import { ThemeProvider, createTheme } from '@mui/material/styles'
+import {
+	ThemeProvider,
+	createTheme,
+	responsiveFontSizes,
+} from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 
 interface Props {
@@ -13,11 +17,13 @@ const Layout = ({ children }: Props) => {
 
 	const theme = useMemo(
 		() =>
-			createTheme({
-				palette: {
-					mode,
-				},
-			}),
+			responsiveFontSizes(
+				createTheme({
+					palette: {
+						mode,
+					},
+				})
+			),
 		[mode]
 	)
 
