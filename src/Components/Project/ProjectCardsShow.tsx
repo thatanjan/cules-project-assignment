@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+import RestartAltIcon from '@mui/icons-material/RestartAlt'
 
 import { useProjects, useAppDispatch } from 'redux/hooks/baseHooks'
 import { resetProjects } from 'redux/reducers/projectsReducer'
@@ -12,7 +13,11 @@ const ResetProjects = () => {
 	const dispatch = useAppDispatch()
 
 	return (
-		<Button variant='contained' onClick={() => dispatch(resetProjects())}>
+		<Button
+			variant='contained'
+			onClick={() => dispatch(resetProjects())}
+			startIcon={<RestartAltIcon />}
+		>
 			Reset Projects
 		</Button>
 	)
