@@ -28,8 +28,19 @@ const ProjectCardsShow = () => {
 					display: 'flex',
 					flexWrap: 'wrap',
 					justifyContent: 'space-between',
-					alignItems: 'start',
+					alignItems: 'center',
 					marginBottom: '2rem',
+
+					'& button': {
+						width: {
+							xs: '100%',
+							sm: 'auto',
+						},
+						marginBottom: {
+							xs: '1rem',
+							sm: '0',
+						},
+					},
 				}}
 			>
 				<AddProject />
