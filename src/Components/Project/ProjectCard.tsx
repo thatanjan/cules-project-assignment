@@ -16,8 +16,6 @@ import { Project } from 'types/Project'
 import { useAppDispatch } from 'redux/hooks/baseHooks'
 import { deleteProject } from 'redux/reducers/projectsReducer'
 
-import getRandomColors from 'utils/getRandomColors'
-
 import DeleteProject from './DeleteProject'
 
 const DeleteButton = ({ id }: { id: string }) => {
@@ -59,12 +57,15 @@ const DeleteButton = ({ id }: { id: string }) => {
 	)
 }
 
+const randomBgColors = ['f44336', '0e91a5', 'c11c9e', 'e5095c', '449b48']
+
 const ProjectCard = ({ name, rating, url, id }: Project) => {
-	const { backgroundColor, color } = getRandomColors()
+	const randomColor =
+		randomBgColors[Math.floor(Math.random() * randomBgColors.length)]
 
 	return (
 		<Card
-			sx={{ pb: '1rem', backgroundColor, color }}
+			sx={{ pb: '1rem', backgroundColor: `#${randomColor}`, color: 'white' }}
 			component={motion.div}
 			layout
 			initial={{
@@ -72,6 +73,11 @@ const ProjectCard = ({ name, rating, url, id }: Project) => {
 			}}
 			animate={{
 				scale: 1,
+			}}
+			whileHover={{
+				scale: 1.1,
+				transition: { duration: 0.2 },
+				cursor: 'pointer',
 			}}
 		>
 			<CardHeader
@@ -85,7 +91,15 @@ const ProjectCard = ({ name, rating, url, id }: Project) => {
 					alignItems: 'center',
 				}}
 			>
-				<Rating value={rating} readOnly sx={{ mt: '0rem' }} />
+				<Rating
+					value={rating}
+					readOnly
+					sx={{
+						mt: '0rem',
+
+						'& .MuiRating-iconEmpty': { color: '#c1c1c1' },
+					}}
+				/>
 
 				<Button
 					component={Link}

@@ -21,7 +21,15 @@ const BasicSelect = () => {
 	}
 
 	return (
-		<Box sx={{ minWidth: '15rem' }}>
+		<Box
+			sx={{
+				minWidth: '15rem',
+				width: {
+					xs: '100%',
+					sm: 'auto',
+				},
+			}}
+		>
 			<FormControl variant='standard' fullWidth>
 				<InputLabel>Sort Projects</InputLabel>
 

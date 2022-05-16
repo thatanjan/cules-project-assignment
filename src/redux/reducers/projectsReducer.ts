@@ -51,9 +51,23 @@ export const projectsSlice = createSlice({
 
 			sortProjectsData({ projects, sortType: payload })
 		},
+		resetProjects: ({ sortType }) => {
+			const projects = sortProjectsData({
+				projects: initialData.concat([]),
+				sortType,
+			})
+
+			storeProjectData(projects)
+
+			return {
+				projects,
+				sortType,
+			}
+		},
 	},
 })
 
-export const { addProject, deleteProject, sortProjects } = projectsSlice.actions
+export const { addProject, deleteProject, sortProjects, resetProjects } =
+	projectsSlice.actions
 
 export default projectsSlice.reducer

@@ -14,14 +14,7 @@ const AddProject = () => {
 
 	return (
 		<>
-			<Button
-				sx={{
-					mb: '2rem',
-				}}
-				startIcon={<AddIcon />}
-				variant='contained'
-				onClick={openDialog}
-			>
+			<Button startIcon={<AddIcon />} variant='contained' onClick={openDialog}>
 				Add project
 			</Button>
 
