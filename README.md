@@ -1,16 +1,17 @@
 # Cules Project
 
-Cules Project is an assignment for a Front-end developer role at [Giosg](https://www.giosg.com/).
-It displays interesting Github projects.
+Cules Project displays interesting Github projects.
 
 ## Demo
+
+https://user-images.githubusercontent.com/71136371/168527344-6962a3a5-8e4d-48f5-b85c-a1db0566855c.mp4
 
 Check the project from [here](https://cules-project-assignment.vercel.app/). This project is deployed on [Vercel](https://vercel.com/)
 
 ## Clone the project
 
 ```bash
-  git clone https://github.com/thatanjan/cules-project-assignment
+  git clone https://github.com/thatanjan/cules-project-assignment.git
   cd cules-project-assignment
 ```
 
@@ -36,6 +37,8 @@ To run tests, run the following command
 - Material-UI
 - Redux Toolkit
 - Formik
+- Jest
+- React Testing Library
 
 ## Features
 
@@ -46,11 +49,11 @@ To run tests, run the following command
 - [x] Clicking on a project's visit button will open the GitHub page in a new tab.
 - [x] Ratings are displayed as Stars.
 
-### Bonus Features
+### Bonus
 
 - [x] Unit test
-- [x] Responsive Ui
+- [x] Responsive UI
 - [x] Eslint and prettier for maintaining coding standard
 - [x] Animate projects when sorted, added, and removed
 - [x] Toggle Color mode
-- [x] Basic CI/CD with Github Actions
+- [x] Basic Continuous Integration with GitHub Actions
