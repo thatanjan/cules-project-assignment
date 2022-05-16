@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import ProjectCardsShow from 'Components/Project/ProjectCardsShow'
+import ProjectActions from 'Components/Project/ProjectActions'
 
-export default App;
+import Layout from 'Components/Layout'
+
+const Home = () => (
+	<Layout>
+		<Box sx={{ width: '90%', maxWidth: '80rem', m: '0 auto' }}>
+			<Typography variant='h1' align='center' sx={{ padding: '3rem 0' }}>
+				Cules Project
+			</Typography>
+
+			<ProjectActions />
+
+			<ProjectCardsShow />
+		</Box>
+	</Layout>
+)
+
+export default Home
