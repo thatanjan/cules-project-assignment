@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Cules Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cules Project displays interesting Github projects.
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+https://user-images.githubusercontent.com/71136371/168527344-6962a3a5-8e4d-48f5-b85c-a1db0566855c.mp4
 
-### `yarn start`
+Check the project from [here](https://cules-project-assignment.vercel.app/). This project is deployed on [Vercel](https://vercel.com/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Clone the project
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+  git clone https://github.com/thatanjan/cules-project-assignment.git
+  cd cules-project-assignment
+```
 
-### `yarn test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  npm install
+  npm run start
+```
 
-### `yarn build`
+## Running Tests
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run tests, run the following command
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+  npm run test
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tech Stack
 
-### `yarn eject`
+- React
+- Typescript
+- Material-UI
+- Redux Toolkit
+- Formik
+- Jest
+- React Testing Library
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Features
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [x] Display projects in a grid.
+- [x] Can create & delete project.
+- [x] Sort projects.
+- [x] Project data is stored in `localStorage`.
+- [x] Clicking on a project's visit button will open the GitHub page in a new tab.
+- [x] Ratings are displayed as Stars.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Bonus
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [x] Unit test
+- [x] Responsive UI
+- [x] Eslint and prettier for maintaining coding standard
+- [x] Animate projects when sorted, added, and removed
+- [x] Toggle Color mode
+- [x] Basic Continuous Integration with GitHub Actions
