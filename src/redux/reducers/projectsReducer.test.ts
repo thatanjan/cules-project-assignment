@@ -1,19 +1,19 @@
 import data from 'data.json'
 import { sortingOptions } from 'globalVars'
 
-import { Projects } from 'types/Project'
+import { store } from 'redux/store'
 
 import projectsReducer, { addProject } from './projectsReducer'
 
 test('should return the initial state', () => {
-	const { projects, sortType } = projectsReducer(undefined, addProject)
+	const { projects, sortType } = store.getState().projects
 
 	expect(projects).toEqual(data)
 	expect(sortType).toEqual(sortingOptions.dateDesc)
 })
 
 test('should add new Project', () => {
-	const initialState = projectsReducer(undefined, addProject)
+	const initialState = store.getState().projects
 
 	const newProject = {
 		id: 'a87e8618-7392-4ac2-b4d0-c6b9b8fb3304',
