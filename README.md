@@ -57,3 +57,4 @@ To run tests, run the following command
 - [x] Animate projects when sorted, added, and removed
 - [x] Toggle Color mode
 - [x] Basic Continuous Integration with GitHub Actions
+- [x] Simple Progressive Web App (PWA)
